@@ -1,5 +1,4 @@
 <h1>Sign up</h1>
-<div class="Sign_Form">
 <%= form_with model: @user, local: true do |form| %>
  
   <% if @user.errors.any? %>
@@ -37,7 +36,7 @@
   </p>
 
   <p>
-    <%= form.label :password_confirmation, 'Password Confirmation' %><br>
+    <%= form.label :password_confirmation %><br>
     <%= form.password_field :password_confirmation %>
   </p>
 
@@ -48,4 +47,3 @@
  
 <% end %>
 <%= link_to 'Back', users_path %>
-</div>
