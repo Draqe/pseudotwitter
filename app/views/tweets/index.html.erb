@@ -1,0 +1,17 @@
+<h1>Listing articles</h1>
+ 
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @tweets.each do |tweet| %>
+    <tr>
+      <td><%= tweet.user_id %></td>
+      <td><%= tweet.text %></td>
+      <td><%= link_to 'Show', tweet_path(tweet) %></td>
+    </tr>
+  <% end %>
+</table>
