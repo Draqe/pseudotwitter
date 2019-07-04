@@ -1,7 +1,4 @@
 class TweetsController < ApplicationController
-  def index
-    @tweets = Tweet.all
-  end
 
   def new
     @tweet = Tweet.new
@@ -12,9 +9,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
+    @user = User.find(params[:user_id])
+    @tweet = @user.tweets.create(tweet_params)
     if @tweet.save
-      redirect_to @tweet
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -41,6 +39,6 @@ class TweetsController < ApplicationController
     
   private
     def tweet_params
-      params.require(:tweet).permit(:user_id, :text)
+      params.require(:tweet).permit(:user, :text)
     end
 end
