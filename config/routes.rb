@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :tweets
+  resources :users do
+    resources :tweets
   resources :sessions
   root 'sessions#index'
   get '/signup', to: 'users#new'
