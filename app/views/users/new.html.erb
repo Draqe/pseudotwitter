@@ -9,7 +9,7 @@
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-        <% end %>
+      <% end %>
       </ul>
     </div>
   <% end %>
@@ -38,8 +38,7 @@
     <%= form.label :password_confirmation %><br>
     <%= form.password_field :password_confirmation %>
   </p>
-
- 
+  
   <p>
     <%= form.submit %>
   </p>
