@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :tweets
   resources :users
- 	root 'users#index'
+  root 'users#index'
 end
