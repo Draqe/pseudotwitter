@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :tweets
   resources :users
-  root 'users#index'
+  resources :sessions
+  root 'sessions#index'
 end
