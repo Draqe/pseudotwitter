@@ -1,47 +1,37 @@
 class TweetsController < ApplicationController
-  def index
-    @tweets = Tweet.all
-  end
-
   def new
     @tweet = Tweet.new
   end
 
-  def show
-    @tweet = Tweet.find(params[:id])
-  end
-
   def create
-    @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      redirect_to @tweet
-    else
-      render 'new'
-    end
+    @user = User.find(params[:user_id])
+    @tweet = @user.tweets.create(tweet_params)
+    redirect_to user_path(@user)
   end
 
   def edit
+    @tweets = Tweet.all
     @tweet = Tweet.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def update
-    @tweet = Tweet.find(params[:id])
-    if @tweet.update(tweet_params)
-      redirect_to @tweet
-    else
-      render 'edit'
-    end
+    @user = User.find(params[:user_id])
+    @tweet = @user.tweets.find(params[:id])
+    @tweet.update(tweet_params)
+    redirect_to user_path(@user)
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
+    @user = User.find(params[:user_id])
+    @tweet = @user.tweets.find(params[:id])
     @tweet.destroy
-    redirect_to tweets_path
+    redirect_to user_path(@user)
   end
-    
+
   private
-  
+
   def tweet_params
-    params.require(:tweet).permit(:user_id, :text)
+    params.require(:tweet).permit(:text)
   end
 end
