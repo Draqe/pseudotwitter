@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+
   def new
     @tweet = Tweet.new
   end
@@ -28,6 +29,7 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to user_path(@user)
   end
+
 
   private
 
