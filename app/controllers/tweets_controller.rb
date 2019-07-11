@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
 
+  before_action :set_type
+
   def show
     @tweet = Tweet.find(params[:id])
     @user = User.find(params[:id])
@@ -35,6 +37,17 @@ class TweetsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def set_type
+    @type = type
+  end
+
+  def type
+    Tweet.types.include?(params[:type]) ? params[:type] : "Tweet"
+  end
+
+  def type_class
+    type.constantize
+  end
 
   private
 
