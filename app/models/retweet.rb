@@ -1,0 +1,3 @@
+class Retweet < Tweet
+
+end
