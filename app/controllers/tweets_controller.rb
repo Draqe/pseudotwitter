@@ -15,7 +15,11 @@ class TweetsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @tweet = @user.send(set_type.pluralize).new(tweet_params)
-    redirect_to user_path(@user)
+    if @tweet.save
+      redirect_to user_path(@user)
+    else
+      render :show
+    end
   end
 
   def edit
