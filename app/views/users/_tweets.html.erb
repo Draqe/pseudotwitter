@@ -11,7 +11,7 @@
       <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
       <td><%= tweet.text %></td>
       <td><%= tweet.type %></td>
-      <td><%= link_to 'Reply', user_tweet_path(@user) %>
+      <td><%= link_to 'Reply', user_tweet_path(@user, tweet) %>
       <% if tweet.user_id == @user.id %>
         <td><%= link_to 'Edit', edit_user_tweet_path(@user, tweet) %></td>
         <td><%= link_to 'Delete', [tweet.user, tweet], method: :delete, data: {confirm: 'Are you sure?' } %></td>
