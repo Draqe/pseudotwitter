@@ -1,0 +1,4 @@
+<h1><%= @tweet.user.first_name + ' ' + @tweet.user.last_name %></h1>
+<h2><%= @tweet.text %></h2>
+<%= render 'tweets/form' %>
+<%= link_to 'Back', user_path %>
