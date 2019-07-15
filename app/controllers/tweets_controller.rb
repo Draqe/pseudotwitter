@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
+    @tweet = Tweet.find(params[:tweet_id])
     @retweet = @user.retweets.new
   end
 
@@ -55,6 +56,6 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(set_type.to_sym).permit(:type, :text)
+    params.require(set_type.to_sym).permit(:type, :text, :tweet_id)
   end
 end
