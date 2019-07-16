@@ -11,7 +11,7 @@
       <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
       <td><%= tweet.text %></td>
       <td><%= tweet.type %></td>
-      <td><%= link_to 'Reply', new_user_retweet_path(@user, tweet_id: tweet.id) %>
+      <td><%= link_to 'Reply', new_tweet_reply_path(tweet) %>
 
     </tr>
   <% end %>

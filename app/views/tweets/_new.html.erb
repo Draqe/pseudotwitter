@@ -1,0 +1,5 @@
+<% if params[:type] != 'Retweet' %>
+  <%= render 'tweets/form' %>
+<% else %>
+  <%= render 'tweets/form3' %>
+<% end %>
