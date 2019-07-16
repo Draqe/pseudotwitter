@@ -3,17 +3,19 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   def new
-    @user = User.find(params[:user_id])
     @tweet = Tweet.find(params[:tweet_id])
-    @retweet = @user.retweets.new
+    @reply = @tweet.retweets.new
+    @reply.type = params[:type]
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @tweet = @user.send(set_type.pluralize).new(tweet_params)
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user
+
     if @tweet.save
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
+      raise @tweet.errors.inspect
       render :new
     end
   end
@@ -46,16 +48,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
-  def set_type
-    case params[:type]
-    when 'Retweet'
-      'retweet'
-    else
-      'tweet'
-    end
-  end
-
   def tweet_params
-    params.require(set_type.to_sym).permit(:type, :text, :tweet_id)
+    params.require(:tweet).permit(:type, :text, :tweet_id, :user_id)
   end
 end

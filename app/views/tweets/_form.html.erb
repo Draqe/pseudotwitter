@@ -1,4 +1,4 @@
-<%= form_with( model: [ @user, @user.tweets.build ], local: true) do |form| %>
+<%= form_for @user.tweets.build do |form| %>
   <% if @user.errors.any? %>
     <div id='error_explanation'>
       <h2>
@@ -14,6 +14,7 @@
 
   <p>
    <%= form.text_area :text %>
+   <%= form.hidden_field :user_id %>
   </p>
   <p>
     <%= form.submit %>
