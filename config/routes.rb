@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :users do
     resources :tweets
-    resources :retweets, controller: 'tweets', type: 'Retweet'
+    resources :replies, controller: 'tweets', type: 'Reply'
   end
 
   resources :tweets do
-    resources :retweets, controller: 'tweets', type: 'Retweet'
+    resources :replies, controller: 'tweets', type: 'Reply'
   end
 
   resources :sessions
