@@ -6,15 +6,13 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @tweet = Tweet.find(params[:tweet_id])
-    @reply = @tweet.retweets.new
+    @reply = @tweet.reply.new
     @reply.type = params[:type]
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
-    @tweet.user_id = current_user
     if @tweet.save
       redirect_to user_path(current_user)
     else
