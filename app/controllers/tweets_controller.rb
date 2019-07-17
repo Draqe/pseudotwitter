@@ -2,17 +2,16 @@ class TweetsController < ApplicationController
 
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
-  def show
-  end
-
   def new
     @tweet = Tweet.find(params[:tweet_id])
-    @reply = @tweet.reply.new
+    @reply = @tweet.replies.new
     @reply.type = params[:type]
+    @reply.user_id = current_user.id
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
+    raise @tweet.inspect
     if @tweet.save
       redirect_to user_path(current_user)
     else
