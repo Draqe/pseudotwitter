@@ -1,3 +1,7 @@
 <h2>Tweet</h2>
-<%= render 'tweets/form2' %>
+<% if @tweet.type == 'Reply' %>
+  <%= render 'tweets/form4' %>
+<% else %>
+  <%= render 'tweets/form2' %>
+<% end %>
 <%= render 'users/tweets' %>
