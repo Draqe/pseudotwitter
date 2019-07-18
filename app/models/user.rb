@@ -13,6 +13,6 @@ class User < ApplicationRecord
   /x
 
   validates :first_name, :last_name, presence:true
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, format: { with: password_format }, on: :create
+  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: 'only valid emails allowed'}, presence: true, uniqueness: true
+  validates :password, presence: true, confirmation: true, format: { with: password_format, message: 'Password requires 1 capital letter, 1 number, and 1 special character' }, on: :create
 end
