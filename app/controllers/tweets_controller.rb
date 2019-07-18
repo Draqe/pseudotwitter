@@ -3,16 +3,18 @@ class TweetsController < ApplicationController
   def new
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.new
-    @reply.type = params[:type]
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    if @tweet.tweet_id.present?
+      @tweet.type = 'Reply'
+    end
     if @tweet.save
       redirect_to user_path(current_user)
     else
-      render :new
+      redirect_to user_path(current_user)
     end
   end
 
@@ -27,7 +29,7 @@ class TweetsController < ApplicationController
     if @tweet.update(tweet_params)
       redirect_to user_path(current_user)
     else
-      render :edit
+      redirect_to user_path(current_user)
     end
   end
 
