@@ -14,7 +14,11 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to user_path(current_user)
     else
-      redirect_to user_path(current_user)
+      if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
     end
   end
 
