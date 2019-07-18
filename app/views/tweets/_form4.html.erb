@@ -1,4 +1,4 @@
-<%= form_for @reply do |form| %>
+<%= form_for @tweet, url: user_reply_path(@tweet) do |form| %>
 
   <p>
    <%= form.text_area :text %>

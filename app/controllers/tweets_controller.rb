@@ -41,7 +41,16 @@ class TweetsController < ApplicationController
 
   private
 
+  def set_type
+    case params[:type]
+    when 'Reply'
+      'reply'
+    else
+      'tweet'
+    end
+  end
+
   def tweet_params
-    params.require(:tweet).permit(:type, :text, :tweet_id, :user_id)
+    params.require(set_type.to_sym).permit(:type, :text, :tweet_id, :user_id)
   end
 end
