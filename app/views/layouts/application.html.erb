@@ -9,20 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if current_user %>>
-      <%= "Logged in as #{current_user.email}" %> | <%= link_to 'Home', user_path(current_user) %> | <%= link_to 'Log Out', session_path(current_user), method: :delete %>
-    <% else %>
-      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', new_session_path %> or <%= link_to 'Sign Up', new_user_path %>
-    <% end %>
-    <hr>
-    <% if notice %>
-      <%= notice %>
-    <% end %>
-
-    <% if alert %>
-      <%= alert %>
-    <% end %>
-    <%= yield %>
+  <body class="text-center" data-gr-c-s-loaded="true">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <%= render 'layouts/navigation' %>
+      <hr>
+      <% if notice %>
+        <%= notice %>
+      <% end %>
+      <% if alert %>
+        <%= alert %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

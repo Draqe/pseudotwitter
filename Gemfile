@@ -59,3 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', :require => 'bcrypt'
 
 gem 'rails_12factor'
+
+gem 'bootstrap-sass'
+
+gem 'jquery-rails'
