@@ -3,14 +3,14 @@
   <tr>
     <th>User</th>
     <th>Text</th>
-    <th>Type</th>
+    <th>Created</th>
     <th colspan='4'></th>
   </tr>
   <% @tweets.each do |tweet| %>
     <tr>
       <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
       <td><%= tweet.text %></td>
-      <td><%= tweet.type %></td>
+      <td><%= tweet.created_at %></td>
       <td><%= link_to 'Reply', new_tweet_reply_path(tweet) %>
       <% if tweet.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_user_tweet_path(@user, tweet) %></td>
