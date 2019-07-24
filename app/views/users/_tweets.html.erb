@@ -10,7 +10,7 @@
   <% @tweets.each do |tweet| %>
     <tr>
       <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
-      <td><%= tweet.text %></td>
+      <td style="word-wrap: break-word;min-width: 160px;max-width: 160px;"><%= tweet.text %></td>
       <td><%= tweet.created_at %></td>
       <td><%= link_to 'Reply', new_tweet_reply_path(tweet) %>
       <% if tweet.user_id == current_user.id %>
