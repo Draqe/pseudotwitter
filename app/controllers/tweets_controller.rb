@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
 
+  before_action :authorize
+
   def new
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.new
@@ -45,7 +47,7 @@ class TweetsController < ApplicationController
   end
 
 
-  private
+  protected
 
   def set_type
     case params[:type]
@@ -55,6 +57,9 @@ class TweetsController < ApplicationController
       'tweet'
     end
   end
+
+
+  private
 
   def tweet_params
     params.require(set_type.to_sym).permit(:type, :text, :tweet_id, :user_id)
