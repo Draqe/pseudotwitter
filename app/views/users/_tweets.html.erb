@@ -1,11 +1,12 @@
 <h3>Published Tweets</h3>
-<table style='width: 100%; text-align: center'>
-  <tr>
-    <th>User</th>
-    <th>Text</th>
-    <th>Created</th>
-    <th colspan='4'></th>
-  </tr>
+<table class="table" style='width: 100%; text-align: center'>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Text</th>
+      <th scope="col">Created</th>
+    </tr>
+  </thead>
   <% @tweets.each do |tweet| %>
     <tr>
       <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
