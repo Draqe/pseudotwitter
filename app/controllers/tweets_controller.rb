@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:id])
     @user = User.find(params[:user_id])
   end

@@ -1,4 +1,4 @@
-<h1><%= @tweet.user.first_name + ' ' + @tweet.user.last_name %></h1>
-<h2><%= @tweet.text %></h2>
+<h1>Tweeter:<%= @tweet.user.first_name + ' ' + @tweet.user.last_name %></h1>
+<h2>Message:<%= @tweet.text %></h2>
 <%= render 'tweets/new' %>
-<%= link_to 'Back', user_path(@tweet.user), class: "btn btn-danger btn-lg" %>
+<%= link_to 'Back', user_path(@tweet.user), class: "btn btn-danger btn-lg btn-block" %>
