@@ -1,5 +1,5 @@
-<h1>Sign up</h1>
 <%= form_with model: @user, local: true do |form| %>
+<h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
   <% if @user.errors.any? %>
     <div id='error_explanation'>
       <h2>
@@ -33,6 +33,7 @@
     <%= form.label :password_confirmation %><br>
     <%= form.password_field :password_confirmation %>
   </div>
-  <%= form.submit "Create Account", class: "btn btn-primary" %>
+  <%= form.submit "Create Account", class: "btn btn-primary btn-lg" %>
 <% end %>
-<%= link_to 'Back', sessions_path, class: "btn btn-danger" %>
+<br>
+<%= link_to 'Back', sessions_path, class: "btn btn-danger btn-lg" %>
