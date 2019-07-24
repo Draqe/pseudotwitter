@@ -15,7 +15,11 @@ class TweetsController < ApplicationController
       @tweet.type = 'Reply'
     end
     if @tweet.save
-      redirect_to user_path(current_user)
+      if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
     else
       if @tweet.type == 'Reply'
         redirect_to new_tweet_reply_path(@tweet.tweet_id)
@@ -34,17 +38,36 @@ class TweetsController < ApplicationController
   def update
     @tweet = Tweet.find(params[:id])
     if @tweet.update(tweet_params)
-      redirect_to user_path(current_user)
+     if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
     else
-      redirect_to user_path(current_user)
+      if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
     end
   end
 
   def destroy
     @user = User.find(params[:user_id])
     @tweet = @user.tweets.find(params[:id])
-    @tweet.destroy
-    redirect_to user_path(@user)
+    if @tweet.destroy
+      if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
+    else
+      if @tweet.type == 'Reply'
+        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+      else
+        redirect_to user_path(current_user)
+      end
+    end
   end
 
 
