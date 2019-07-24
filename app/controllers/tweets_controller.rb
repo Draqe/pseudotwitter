@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   before_action :authorize
 
   def new
+    @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.new
   end
