@@ -14,5 +14,5 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence:true
   validates :email, format: {with: /.+@.+\..+/i, message: 'only valid emails allowed'}, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, format: { with: password_format, message: 'Password requires 1 capital letter, 1 number, and 1 special character' }, on: :create
+  validates :password, presence: true, confirmation: true, format: { with: password_format}, on: :create
 end
