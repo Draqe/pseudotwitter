@@ -1,5 +1,32 @@
 @import 'bootstrap';
 
+/* navbar */
+.navbar-default {
+    background-color: #4C9A2A;
+    border-color: #1E5631;
+}
+/* Title */
+.navbar-default .navbar-brand {
+    color: #FCF6F5FF;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #F0E1B9FF;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: #FCF6F5FF;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #F0E1B9FF;
+}
+
+body{
+  background: #68bb59;
+  color: #F0E1B9FF;
+}
+
 aside {
   section.user_info {
     margin-top: 20px;
