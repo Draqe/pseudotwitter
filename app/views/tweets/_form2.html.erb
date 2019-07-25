@@ -1,6 +1,6 @@
 <%= form_for @tweet do |form| %>
   <div>
-    <%= form.text_area :text %>
+    <%= form.text_area :text, class: 'form-control' %>
     <%= form.submit 'Update Tweet', class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
