@@ -1,6 +1,6 @@
 <%= form_for @reply do |form| %>
   <div>
-    <%= form.text_area :text, class: 'form-control' %>
+    <%= form.text_area :text, class: 'form-control', required: true %>
     <%= form.hidden_field :tweet_id %>
     <%= form.submit 'Reply', class: 'btn btn-primary btn-lg' %>
   </div>
