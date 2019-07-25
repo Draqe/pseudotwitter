@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'pages/secret'
   resources :users do
     resources :tweets
     resources :replies, controller: 'tweets', type: 'Reply'
