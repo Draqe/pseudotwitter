@@ -1,16 +1,16 @@
-<table class="table" style='width: 100%'>
-  <thead class="thead-dark">
+<table class='table' style='width: 100%'>
+  <thead class='thead-dark'>
     <tr>
-      <th scope="col">User</th>
-      <th scope="col">Text</th>
-      <th scope="col">Created</th>
+      <th scope='col'>User</th>
+      <th scope='col'>Text</th>
+      <th scope='col'>Created</th>
     </tr>
   </thead>
   <% @tweets.each do |tweet| %>
     <% if tweet.tweet_id == @tweet.id %>
       <tr>
         <td><%= tweet.user.first_name + ' ' + tweet.user.last_name %></td>
-        <td style="word-wrap: break-word;min-width: 160px;max-width: 160px;"><%= tweet.text %></td>
+        <td style='word-wrap: break-word;min-width: 160px;max-width: 160px;'><%= tweet.text %></td>
         <td><%= time_ago_in_words tweet.created_at %></td>
         <td><%= link_to 'Reply', new_tweet_reply_path(tweet) %>
         <% if tweet.user_id == current_user.id %>

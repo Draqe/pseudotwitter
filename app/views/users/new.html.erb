@@ -1,42 +1,30 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with model: @user, local: true do |form| %>
-    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
-      <% if @user.errors.any? %>
-        <div id='error_explanation'>
-          <h2>
-            <%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:
-          </h2>
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="form-group" style="text-align: left">
+<div class='row'>
+  <div class='col-md-6 col-md-offset-3'>
+    <%= form_for @user do |form| %>
+    <%= render 'shared/error_messages' %>
+    <h1 class='h3 mb-3 font-weight-normal'>Sign Up</h1>
+      <div class='form-group' style='text-align: left'>
         <%= form.label :first_name %><br>
-        <%= form.text_field :first_name %>
+        <%= form.text_field :first_name, class: 'form-control' %>
       </div>
-      <div class="form-group" style="text-align: left">
+      <div class='form-group' style='text-align: left'>
         <%= form.label :last_name %><br>
-        <%= form.text_field :last_name %>
+        <%= form.text_field :last_name, class: 'form-control' %>
       </div>
-      <div class="form-group" style="text-align: left">
+      <div class='form-group' style='text-align: left'>
         <%= form.label :email %><br>
-        <%= form.email_field :email %>
+        <%= form.email_field :email, class: 'form-control' %>
       </div>
-      <div class="form-group" style="text-align: left">
+      <div class='form-group' style='text-align: left'>
         <%= form.label :password %><br>
-        <%= form.password_field :password %>
+        <%= form.password_field :password, class: 'form-control' %>
       </div>
-      <div class="form-group" style="text-align: left">
+      <div class='form-group' style='text-align: left'>
         <%= form.label :password_confirmation %><br>
-        <%= form.password_field :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: 'form-control' %>
       </div>
-      <%= form.submit "Create Account", class: "btn btn-primary btn-lg" %>
-      <%= link_to 'Back', sessions_path, class: "btn btn-danger btn-lg btn-block" %>
+      <%= form.submit 'Create Account', class: 'btn btn-primary btn-lg' %>
+      <%= link_to 'Back', sessions_path, class: 'btn btn-danger btn-lg btn-block' %>
     <% end %>
   </div>
 </div>
