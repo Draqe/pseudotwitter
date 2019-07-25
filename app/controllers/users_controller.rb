@@ -18,8 +18,6 @@ class UsersController < ApplicationController
       flash[:notice] = 'Account created successfully!'
       redirect_to root_path
     else
-      flash.now.alert =
-        'Please make sure you are using a valid email and password and try again.'
       render 'new'
     end
   end
