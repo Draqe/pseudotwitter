@@ -1,6 +1,9 @@
 <%= form_for @tweet, url: user_reply_path(@tweet) do |form| %>
   <div>
     <%= form.text_area :text, class: 'form-control', required: true %>
+    <div style='font-size: 9.5px'>
+      *140 character limit
+    </div>
     <%= form.submit 'Update Reply', class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>

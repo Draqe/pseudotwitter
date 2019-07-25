@@ -1,6 +1,9 @@
 <%= form_for @reply do |form| %>
   <div>
     <%= form.text_area :text, class: 'form-control', required: true %>
+    <div style='font-size: 9.5px'>
+      *140 character limit
+    </div>
     <%= form.hidden_field :tweet_id %>
     <%= form.submit 'Reply', class: 'btn btn-primary btn-lg' %>
   </div>
