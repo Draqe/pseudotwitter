@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    current_user.nil?
+    if current_user.nil?
       redirect_to(
         root_path, alert: 'You must be logged in to access this page'
       )
+    end
   end
 end
