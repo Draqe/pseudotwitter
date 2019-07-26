@@ -55,18 +55,11 @@ class TweetsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @tweet = @user.tweets.find(params[:id])
-    if @tweet.destroy
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
-      else
-        redirect_to user_path(current_user)
-      end
+    @tweet.destroy
+    if @tweet.type == 'Reply'
+      redirect_to new_tweet_reply_path(@tweet.tweet_id)
     else
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
-      else
-        redirect_to user_path(current_user)
-      end
+      redirect_to user_path(current_user)
     end
   end
 
