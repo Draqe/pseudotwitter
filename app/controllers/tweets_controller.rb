@@ -73,7 +73,7 @@ class TweetsController < ApplicationController
         end
       end
     rescue
-      flash[:error] = 'Tweet has errors!'
+      flash[:notice] = 'Tweet has errors!'
       redirect_to user_path(current_user)
     end
   end
