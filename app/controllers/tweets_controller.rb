@@ -21,7 +21,7 @@ class TweetsController < ApplicationController
         redirect_to user_path(current_user)
       end
     else
-      flash[:error] = 'Tweet has errors!'
+      flash[:notice] = 'Tweet has errors!'
       if @tweet.type == 'Reply'
         redirect_to new_tweet_reply_path(@tweet.tweet_id)
       else
@@ -45,7 +45,7 @@ class TweetsController < ApplicationController
         redirect_to user_path(current_user)
       end
     else
-      flash[:error] = 'Tweet has errors!'
+      flash[:notice] = 'Tweet has errors!'
       if @tweet.type == 'Reply'
         redirect_to new_tweet_reply_path(@tweet.tweet_id)
       else
@@ -65,7 +65,7 @@ class TweetsController < ApplicationController
           redirect_to user_path(current_user)
         end
       else
-        flash[:error] = 'Tweet has errors!'
+        flash[:notice] = 'Tweet has errors!'
         if @tweet.type == 'Reply'
           redirect_to new_tweet_reply_path(@tweet.tweet_id)
         else
