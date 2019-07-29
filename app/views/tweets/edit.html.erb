@@ -1,3 +1,23 @@
-<h2>Tweet</h2>
-<%= render 'tweets/form2' %>
-<%= render 'users/tweets' %>
+<% if @tweet.type == 'Reply' %>
+  <% orig_tweet = Tweet.find(@tweet.tweet_id) %>
+  <h1>Tweeter: <%= orig_tweet.user.first_name + ' ' + orig_tweet.user.last_name %></h1>
+  <h2 style='word-wrap: break-word'>Message: <%= orig_tweet.text %></h2>
+  <%= render 'tweets/form4' %>
+  <%= link_to 'Back', user_path(current_user), class: 'btn btn-danger btn-lg btn-block' %>
+  <% @tweet = orig_tweet %>
+  <%= render 'tweets/replies' %>
+<% else %>
+  <div class='row'>
+    <aside class='col-md-4'>
+      <section class='user_info'>
+        <h1><%= current_user.last_name %></h1>
+        <h3><%= current_user.first_name %></h3>
+        <h5><%= current_user.email %></h5>
+      </section>
+    </aside>
+    <div class='col-md-8'>
+      <%= render 'tweets/form2' %>
+      <%= render 'users/tweets' %>
+    </div>
+  </div>
+<% end %>

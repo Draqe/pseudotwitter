@@ -1,0 +1,5 @@
+<% if params[:type] != 'Reply' %>
+  <%= render 'tweets/form' %>
+<% else %>
+  <%= render 'tweets/form3' %>
+<% end %>
