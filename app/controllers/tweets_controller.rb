@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
   before_action :authorize
 
   def index
-    @tweets = Tweet.all
+    tweets = Tweet.all
+    render json: tweets
   end
 
   def new
@@ -14,22 +15,26 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
+    tweets = Tweet.all
     @tweet.user_id = current_user.id
     if @tweet.tweet_id.present?
       @tweet.type = 'Reply'
     end
-    if @tweet.save
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+    respond_to do |format|
+      if @tweet.save
+        if @tweet.type == 'Reply'
+          redirect_to new_tweet_reply_path(@tweet.tweet_id)
+        else
+          format.html { redirect_to user_path(current_user) }
+          format.json { render json: tweets }
+        end
       else
-        redirect_to user_path(current_user)
-      end
-    else
-      flash[:notice] = 'Tweet has errors!'
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
-      else
-        redirect_to user_path(current_user)
+        flash[:notice] = 'Tweet has errors!'
+        if @tweet.type == 'Reply'
+          redirect_to new_tweet_reply_path(@tweet.tweet_id)
+        else
+          redirect_to user_path(current_user)
+        end
       end
     end
   end
