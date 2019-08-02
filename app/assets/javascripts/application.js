@@ -28,7 +28,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
-        $('table#tweets tbody').html("<%= j render partial: 'tweets/tweet', local: {tweet: " + data + "} %>")
+        $('#tweets').html(data)
       },
       error: function(data){
         console.log(data);
