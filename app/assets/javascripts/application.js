@@ -19,7 +19,8 @@
 
 
 $(document).ready(function(){
-  $('.btn').on('click', function(){
+  $('.btn').on('click', function(event){
+    event.preventDefault();
     $.ajax({
       url: '/tweets',
       type: 'POST',
