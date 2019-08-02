@@ -1,4 +1,4 @@
-<%= form_for @user.tweets.build do |form| %>
+<%= form_for @user.tweets.build, remote: true do |form| %>
   <div>
     <%= form.text_area :text, class: 'form-control', id: 'text', maxlength: 140, required: true %>
     <div style='font-size: 9.5px'>
