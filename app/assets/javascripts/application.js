@@ -28,6 +28,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
+        $('table#tweets tbody').prepend("<%= j render partial: 'tweets/tweet', local: {tweet: " + data + "} %>")
       },
       error: function(data){
         console.log(data);
