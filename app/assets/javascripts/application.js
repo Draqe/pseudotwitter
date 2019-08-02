@@ -27,6 +27,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
+        $('table#tweets tbody').html("<%= j render partials: 'tweets/tweet'");
       },
       error: function(data){
         console.log(data);
