@@ -16,14 +16,20 @@
 //= require turbolinks
 //= require_tree .
 
+
+
 $(document).ready(function(){
   $('.btn').on('click', function(){
     $.ajax({
       url: '/tweets',
-      type: 'GET',
+      type: 'POST',
       dataType: 'json',
+      data: {tweet: {text: $('#text').val()}},
       success: function(data){
-        console.log('success', data);
+        console.log(data);
+      },
+      error: function(data){
+        console.log(data);
       }
     });
   });

@@ -11,11 +11,14 @@ class TweetsController < ApplicationController
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.new
+    respond_to do |format|
+      format.html { redirect_to new_user_tweet_path(current_user) }
+      format.json { render json: @tweet }
+    end
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
-    tweets = Tweet.all
     @tweet.user_id = current_user.id
     if @tweet.tweet_id.present?
       @tweet.type = 'Reply'
@@ -26,7 +29,7 @@ class TweetsController < ApplicationController
           redirect_to new_tweet_reply_path(@tweet.tweet_id)
         else
           format.html { redirect_to user_path(current_user) }
-          format.json { render json: tweets }
+          format.json { render json: @tweet, status: :created, location: @tweet }
         end
       else
         flash[:notice] = 'Tweet has errors!'
