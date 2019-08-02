@@ -27,7 +27,6 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
-
       },
       error: function(data){
         console.log(data);
