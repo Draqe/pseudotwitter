@@ -19,7 +19,7 @@
 
 
 $(document).ready(function(){
-  $('.btn').on('click', function(event){
+  $('#tweet_submit').on('click', function(event){
     event.preventDefault();
     $.ajax({
       url: '/tweets',
@@ -28,7 +28,8 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
-        $('#tweets').html(data)
+        $('#tweets').
+          prepend("<%= escape_javascript ("#{ render partial: "tweets/tweet"}").html_safe %>");
       },
       error: function(data){
         console.log(data);

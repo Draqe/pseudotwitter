@@ -7,10 +7,6 @@ class TweetsController < ApplicationController
     render json: tweets
   end
 
-  def show
-    render partial: 'tweet'
-  end
-
   def new
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
