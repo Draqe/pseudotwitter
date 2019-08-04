@@ -36,4 +36,22 @@ $(document).ready(function(){
       }
     });
   });
+
+  $('#reply_submit').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: '/tweets',
+      type: 'POST',
+      dataType: 'json',
+      data: {tweet: {text: $('#text').val()}, type: 'Reply'},
+      success: function(data){
+        console.log(data);
+        $('#replies').
+          prepend("<%= escape_javascript ("{ render partial: "tweets/reply"}").html_safe %>");
+      },
+      error: function(data){
+        console.log(data);
+      }
+    });
+  });
 });

@@ -11,10 +11,6 @@ class TweetsController < ApplicationController
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.new
-    respond_to do |format|
-      format.html { redirect_to new_user_tweet_path(current_user) }
-      format.json { render json: @tweet }
-    end
   end
 
   def create
