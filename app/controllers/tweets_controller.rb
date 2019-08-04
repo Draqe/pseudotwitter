@@ -22,7 +22,8 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.save
         if @tweet.type == 'Reply'
-          redirect_to new_tweet_reply_path(@tweet.tweet_id)
+          format.html { redirect_to new_tweet_reply_path(@tweet.tweet_id) }
+          format.json { render json: @reply, status: :created, location: @tweet }
         else
           format.html { redirect_to user_path(current_user) }
           format.json { render json: @tweet, status: :created, location: @tweet }
