@@ -47,7 +47,7 @@ $(document).ready(function(){
       success: function(data){
         console.log(data);
         $('#replies').
-          prepend("<%= escape_javascript ("{ render partial: "tweets/reply"}").html_safe %>");
+          prepend("<%= escape_javascript ("#{ render partial: "tweets/reply"}").html_safe %>");
       },
       error: function(data){
         console.log(data);
