@@ -29,7 +29,7 @@ $(document).ready(function(){
       success: function(data){
         console.log(data);
         $('#tweets').
-          prepend(render partial: 'tweets/tweet');
+          prepend("<%= escape_javascript ("#{ render partial: "tweets/tweet"}").html_safe %>");
       },
       error: function(data){
         console.log(data);
@@ -47,7 +47,7 @@ $(document).ready(function(){
       success: function(data){
         console.log(data);
         $('#replies').
-          prepend(render partial: 'tweets/reply');
+          prepend("<%= escape_javascript ("#{ render partial: "tweets/reply"}").html_safe %>");
       },
       error: function(data){
         console.log(data);
