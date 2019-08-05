@@ -1,10 +1,10 @@
-<%= form_for @reply do |form| %>
+<%= form_for @reply, remote: true do |form| %>
   <div>
     <%= form.text_area :text, class: 'form-control', maxlength: 140, required: true %>
     <div style='font-size: 9.5px'>
       *140 character limit
     </div>
     <%= form.hidden_field :tweet_id %>
-    <%= form.submit 'Reply', class: 'btn btn-primary btn-lg' %>
+    <%= form.submit 'Reply', class: 'btn btn-primary btn-lg', id: 'reply_submit' %>
   </div>
 <% end %>

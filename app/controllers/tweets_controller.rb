@@ -14,18 +14,22 @@ class TweetsController < ApplicationController
     if @tweet.tweet_id.present?
       @tweet.type = 'Reply'
     end
-    if @tweet.save
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
+    respond_to do |format|
+      if @tweet.save
+        if @tweet.type == 'Reply'
+          format.html { redirect_to new_tweet_reply_path(@tweet.tweet_id) }
+          format.json { render json: @reply, status: :created, location: @tweet }
+        else
+          format.html { redirect_to user_path(current_user) }
+          format.json { render json: @tweet, status: :created, location: @tweet }
+        end
       else
-        redirect_to user_path(current_user)
-      end
-    else
-      flash[:notice] = 'Tweet has errors!'
-      if @tweet.type == 'Reply'
-        redirect_to new_tweet_reply_path(@tweet.tweet_id)
-      else
-        redirect_to user_path(current_user)
+        flash[:notice] = 'Tweet has errors!'
+        if @tweet.type == 'Reply'
+          redirect_to new_tweet_reply_path(@tweet.tweet_id)
+        else
+          redirect_to user_path(current_user)
+        end
       end
     end
   end
