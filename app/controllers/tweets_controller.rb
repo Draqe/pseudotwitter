@@ -2,11 +2,6 @@ class TweetsController < ApplicationController
 
   before_action :authorize
 
-  def index
-    tweets = Tweet.all
-    render json: tweets
-  end
-
   def new
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
