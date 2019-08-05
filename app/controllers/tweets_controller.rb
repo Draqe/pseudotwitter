@@ -2,6 +2,16 @@ class TweetsController < ApplicationController
 
   before_action :authorize
 
+  def show
+    @tweets = Tweet.order(created_at: :desc)
+    render partial: 'tweets/tweet', collection: @tweets
+  end
+
+  def show_replies
+    @tweets = Tweet.order(created_at: :desc)
+    render partial: 'tweets/reply', collection: @tweets
+  end
+
   def new
     @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])

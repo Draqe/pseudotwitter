@@ -5,7 +5,7 @@
     <td>created <%= time_ago_in_words tweet.created_at %> ago</td>
     <td><%= link_to 'Reply', new_tweet_reply_path(tweet) %></td>
     <% if tweet.user_id == current_user.id %>
-      <td><%= link_to 'Edit', edit_user_tweet_path(@user, tweet) %></td>
+      <td><%= link_to 'Edit', edit_user_tweet_path(current_user, tweet) %></td>
       <td><%= link_to 'Delete', [tweet.user, tweet], method: :delete, data: {confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
