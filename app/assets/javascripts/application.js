@@ -26,10 +26,9 @@ $(document).ready(function(){
       type: 'POST',
       dataType: 'json',
       data: {tweet: {text: $('#text').val()}},
-      success: function(data){
-        console.log(data);
-        $('#tweets').
-          prepend("<%= escape_javascript ("#{ render partial: "tweets/tweet"}").html_safe %>");
+      success: function(tweet){
+        console.log(tweet);
+        $('#tweets').load('/tweets/show');
       },
       error: function(data){
         console.log(data);
@@ -46,8 +45,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}, type: 'Reply'},
       success: function(data){
         console.log(data);
-        $('#replies').
-          prepend("<%= escape_javascript ("#{ render partial: "tweets/reply"}").html_safe %>");
+        $('#replies').load('/tweets/show_replies');
       },
       error: function(data){
         console.log(data);
