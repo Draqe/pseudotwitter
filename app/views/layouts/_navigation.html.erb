@@ -1,8 +1,11 @@
 <nav class='navbar navbar-default'>
   <div class='container-fluid'>
     <% if current_user %>
-      <div class='navbar-header'>
-        <%= link_to 'Pseudotwitter', user_path(current_user), class: 'navbar-brand' %>
+      <div>
+        <%= link_to image_tag('PseudoTwitterIcon.png', size: '60x40'), user_path(current_user), class: 'navbar-brand', style: 'top: -10px' %>
+        <span class='navbar-brand' style='left: 60px'>
+          Logged in as <%= current_user.email %>
+        </span>
       </div>
       <ul class='nav navbar-nav navbar-right'>
         <li class='nav-item'>
@@ -14,7 +17,8 @@
       </ul>
     <% else %>
       <div class='navbar-header'>
-        <a class='navbar-brand' href='/'>Pseudotwitter</a>
+        <%= link_to image_tag('PseudoTwitterIcon.png', size: '60x40'), root_path, class: 'navbar-brand', style: 'top: -10px' %>
+        <a class='navbar-brand' style='left: 60px'>Pseudotwitter</a>
       </div>
       <ul  class='nav navbar-nav navbar-right'>
         <li class='nav-item'>

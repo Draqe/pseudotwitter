@@ -1,9 +1,17 @@
 <%= form_for @tweet do |form| %>
   <div>
-    <%= form.text_area :text, class: 'form-control', maxlength: 140, required: true %>
-    <div style='font-size: 9.5px'>
-      *140 character limit
-    </div>
+    <%= form.text_area :text, class: 'form-control', id: 'text', maxlength: 140, required: true %>
+    Character limit: <span id='counter'>0</span>/140
     <%= form.submit 'Update Tweet', class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
+
+<script>
+  var this_text = document.getElementById('text');
+  var counter = document.getElementById('counter');
+
+  this_text.addEventListener('keyup', function() {
+    var characters = this_text.value.split('');
+    counter.innerText = characters.length;
+  });
+</script>

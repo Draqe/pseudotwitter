@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
-  def index
-  end
+  before_action :authorized
 
   def new
   end
@@ -18,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to sessions_path, notice: 'Logged out!'
+    redirect_to root_path, notice: 'Logged out!'
   end
 end

@@ -28,6 +28,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}},
       success: function(data){
         console.log(data);
+        $("#text")[0].reset();
         $('#tweets').
           prepend(render partial: 'tweets/tweet');
       },
@@ -46,6 +47,7 @@ $(document).ready(function(){
       data: {tweet: {text: $('#text').val()}, type: 'Reply'},
       success: function(data){
         console.log(data);
+        $("#text")[0].reset();
         $('#replies').
           prepend(render partial: 'tweets/reply');
       },

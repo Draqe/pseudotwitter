@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authorize, except: [:new, :create]
+  before_action :authorized, except: [:show]
 
   def new
     @user = User.new
@@ -15,8 +16,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email.downcase!
     if @user.save
-      flash[:notice] = 'Account created successfully!'
-      redirect_to root_path
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
       render 'new'
     end
