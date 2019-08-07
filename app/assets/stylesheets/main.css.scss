@@ -2,8 +2,8 @@
 
 /* navbar */
 .navbar-default {
-  background-color: #4C9A2A;
-  border-color: #1E5631;
+  background-color: #4C4A44;
+  border-color: #222226;
 }
 /* Title */
 .navbar-default .navbar-brand {
@@ -11,23 +11,23 @@
   width: 100%;
   left: 0;
   margin: auto;
-  color: #FCF6F5FF;
+  color: #ABB2BF;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #FCF6F5FF;
+  color: #ABB2BF;
 }
 /* Link */
 .navbar-default .navbar-nav > li > a {
-  color: #FCF6F5FF;
+  color: #ABB2BF;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #F0E1B9FF;
+  color: #54B6B9;
 }
 
 body{
-  background: #68bb59;
+  background: #282C34;
   color: #F0E1B9FF;
 }
 
