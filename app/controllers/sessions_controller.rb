@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
-  def index
-  end
+  before_action :authorized
 
   def new
   end
