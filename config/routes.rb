@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
-  root 'sessions#index'
+  root 'sessions#new'
 end
